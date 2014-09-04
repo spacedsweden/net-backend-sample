@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SinchBackend", "SinchBackend\SinchBackend.csproj", "{19819FD4-C2F3-48C5-8DDC-B511791A1C50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{6EDCA3D1-0C95-49FE-827D-3337C717AE85}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{D43C0970-21C0-41CB-87C8-350C4CEF55B5}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\SinchBackend-WAWS-dev.json = PublishScripts\Configurations\SinchBackend-WAWS-dev.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1DE06B0F-91C4-4632-9118-273B49F89C10}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19819FD4-C2F3-48C5-8DDC-B511791A1C50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19819FD4-C2F3-48C5-8DDC-B511791A1C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19819FD4-C2F3-48C5-8DDC-B511791A1C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19819FD4-C2F3-48C5-8DDC-B511791A1C50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D43C0970-21C0-41CB-87C8-350C4CEF55B5} = {6EDCA3D1-0C95-49FE-827D-3337C717AE85}
+	EndGlobalSection
+EndGlobal
