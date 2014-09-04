@@ -1,0 +1,518 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calling tutorial JS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+                pre, code, tt {
+                    font-size: 12px;
+                    font-family: Consolas, "Liberation Mono", Courier, monospace;
+                }
+
+                code, tt {
+                    margin: 0 0px;
+                    padding: 0px 0px;
+                    white-space: nowrap;
+                    border: 1px solid #eaeaea;
+                    background-color: #f8f8f8;
+                    border-radius: 3px;
+                }
+
+                pre > code {
+                    margin: 0;
+                    padding: 0;
+                    white-space: pre;
+                    border: none;
+                    background: transparent;
+                }
+
+                pre {
+                    background-color: #f8f8f8;
+                    border: 1px solid #ccc;
+                    font-size: 13px;
+                    line-height: 19px;
+                    overflow: auto;
+                    padding: 6px 10px;
+                    border-radius: 3px;
+                }
+
+                    pre code, pre tt {
+                        background-color: transparent;
+                        border: none;
+                    }
+
+                kbd {
+                    -moz-border-bottom-colors: none;
+                    -moz-border-left-colors: none;
+                    -moz-border-right-colors: none;
+                    -moz-border-top-colors: none;
+                    background-color: #DDDDDD;
+                    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+                    background-repeat: repeat-x;
+                    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+                    border-image: none;
+                    border-radius: 2px 2px 2px 2px;
+                    border-style: solid;
+                    border-width: 1px;
+                    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+                    line-height: 10px;
+                    padding: 1px 4px;
+                }
+    </style>
+    <style type="text/css">
+        .highlight {
+            background: #ffffff;
+        }
+
+            .highlight .c {
+                color: #999988;
+                font-style: italic;
+            }
+            /* Comment */
+            .highlight .err {
+                color: #a61717;
+                background-color: #e3d2d2;
+            }
+            /* Error */
+            .highlight .k {
+                font-weight: bold;
+            }
+            /* Keyword */
+            .highlight .o {
+                font-weight: bold;
+            }
+            /* Operator */
+            .highlight .cm {
+                color: #999988;
+                font-style: italic;
+            }
+            /* Comment.Multiline */
+            .highlight .cp {
+                color: #999999;
+                font-weight: bold;
+            }
+            /* Comment.Preproc */
+            .highlight .c1 {
+                color: #999988;
+                font-style: italic;
+            }
+            /* Comment.Single */
+            .highlight .cs {
+                color: #999999;
+                font-weight: bold;
+                font-style: italic;
+            }
+            /* Comment.Special */
+            .highlight .gd {
+                color: #000000;
+                background-color: #ffdddd;
+            }
+                /* Generic.Deleted */
+                .highlight .gd .x {
+                    color: #000000;
+                    background-color: #ffaaaa;
+                }
+            /* Generic.Deleted.Specific */
+            .highlight .ge {
+                font-style: italic;
+            }
+            /* Generic.Emph */
+            .highlight .gr {
+                color: #aa0000;
+            }
+            /* Generic.Error */
+            .highlight .gh {
+                color: #999999;
+            }
+            /* Generic.Heading */
+            .highlight .gi {
+                color: #000000;
+                background-color: #ddffdd;
+            }
+                /* Generic.Inserted */
+                .highlight .gi .x {
+                    color: #000000;
+                    background-color: #aaffaa;
+                }
+            /* Generic.Inserted.Specific */
+            .highlight .go {
+                color: #888888;
+            }
+            /* Generic.Output */
+            .highlight .gp {
+                color: #555555;
+            }
+            /* Generic.Prompt */
+            .highlight .gs {
+                font-weight: bold;
+            }
+            /* Generic.Strong */
+            .highlight .gu {
+                color: #aaaaaa;
+            }
+            /* Generic.Subheading */
+            .highlight .gt {
+                color: #aa0000;
+            }
+            /* Generic.Traceback */
+            .highlight .kc {
+                font-weight: bold;
+            }
+            /* Keyword.Constant */
+            .highlight .kd {
+                font-weight: bold;
+            }
+            /* Keyword.Declaration */
+            .highlight .kp {
+                font-weight: bold;
+            }
+            /* Keyword.Pseudo */
+            .highlight .kr {
+                font-weight: bold;
+            }
+            /* Keyword.Reserved */
+            .highlight .kt {
+                color: #445588;
+                font-weight: bold;
+            }
+            /* Keyword.Type */
+            .highlight .m {
+                color: #009999;
+            }
+            /* Literal.Number */
+            .highlight .s {
+                color: #d14;
+            }
+            /* Literal.String */
+            .highlight .na {
+                color: #008080;
+            }
+            /* Name.Attribute */
+            .highlight .nb {
+                color: #0086B3;
+            }
+            /* Name.Builtin */
+            .highlight .nc {
+                color: #445588;
+                font-weight: bold;
+            }
+            /* Name.Class */
+            .highlight .no {
+                color: #008080;
+            }
+            /* Name.Constant */
+            .highlight .ni {
+                color: #800080;
+            }
+            /* Name.Entity */
+            .highlight .ne {
+                color: #990000;
+                font-weight: bold;
+            }
+            /* Name.Exception */
+            .highlight .nf {
+                color: #990000;
+                font-weight: bold;
+            }
+            /* Name.Function */
+            .highlight .nn {
+                color: #555555;
+            }
+            /* Name.Namespace */
+            .highlight .nt {
+                color: #000080;
+            }
+            /* Name.Tag */
+            .highlight .nv {
+                color: #008080;
+            }
+            /* Name.Variable */
+            .highlight .ow {
+                font-weight: bold;
+            }
+            /* Operator.Word */
+            .highlight .w {
+                color: #bbbbbb;
+            }
+            /* Text.Whitespace */
+            .highlight .mf {
+                color: #009999;
+            }
+            /* Literal.Number.Float */
+            .highlight .mh {
+                color: #009999;
+            }
+            /* Literal.Number.Hex */
+            .highlight .mi {
+                color: #009999;
+            }
+            /* Literal.Number.Integer */
+            .highlight .mo {
+                color: #009999;
+            }
+            /* Literal.Number.Oct */
+            .highlight .sb {
+                color: #d14;
+            }
+            /* Literal.String.Backtick */
+            .highlight .sc {
+                color: #d14;
+            }
+            /* Literal.String.Char */
+            .highlight .sd {
+                color: #d14;
+            }
+            /* Literal.String.Doc */
+            .highlight .s2 {
+                color: #d14;
+            }
+            /* Literal.String.Double */
+            .highlight .se {
+                color: #d14;
+            }
+            /* Literal.String.Escape */
+            .highlight .sh {
+                color: #d14;
+            }
+            /* Literal.String.Heredoc */
+            .highlight .si {
+                color: #d14;
+            }
+            /* Literal.String.Interpol */
+            .highlight .sx {
+                color: #d14;
+            }
+            /* Literal.String.Other */
+            .highlight .sr {
+                color: #009926;
+            }
+            /* Literal.String.Regex */
+            .highlight .s1 {
+                color: #d14;
+            }
+            /* Literal.String.Single */
+            .highlight .ss {
+                color: #990073;
+            }
+            /* Literal.String.Symbol */
+            .highlight .bp {
+                color: #999999;
+            }
+            /* Name.Builtin.Pseudo */
+            .highlight .vc {
+                color: #008080;
+            }
+            /* Name.Variable.Class */
+            .highlight .vg {
+                color: #008080;
+            }
+            /* Name.Variable.Global */
+            .highlight .vi {
+                color: #008080;
+            }
+            /* Name.Variable.Instance */
+            .highlight .il {
+                color: #009999;
+            }
+        /* Literal.Number.Integer.Long */
+        .task-list {
+            padding-left: 10px;
+            margin-bottom: 0;
+        }
+
+            .task-list li {
+                margin-left: 20px;
+            }
+
+        .task-list-item {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+
+            .task-list-item label {
+                font-weight: 400;
+            }
+
+            .task-list-item.enabled label {
+                cursor: pointer;
+            }
+
+            .task-list-item + .task-list-item {
+                margin-top: 3px;
+            }
+
+        .task-list-item-checkbox {
+            display: inline-block;
+            margin-left: -20px;
+            margin-right: 3px;
+            vertical-align: 1px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="http://tutorial.sinch.com/index.css">
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-50667467-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body>
+    <div id="sidebar">
+        <a href="http://www.sinch.com"><img id=logo src="http://tutorial.sinch.com/logo.png" /></a>
+
+        <div id="sinch-signup">
+            <div id="mailing-list-text">Would you like to hear<br /> about future tuturials?</div>
+            <a href="http://www.sinch.com/dashboard/#/signup" id="sinch-signup-button" >YES!</a>
+        </div>
+        <div id="tweet">
+            Questions?
+            <a href="https://twitter.com/intent/tweet?screen_name=SinchDev&text=I%20have%20a%20question%20about%20your%20Android%20messaging%20tutorial!" class="twitter-mention-button" data-related="SinchDev">Tweet to @SinchDev</a>
+            <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+        </div>
+    </div>
+
+    <div id="wrapper">
+	<h1>Using Delegated Security With Your Own Application Server Using C# and the Sinch SDK</h1>
+
+<p>Our recommended way for authenticating with Sinch is by using delegated security. This is especially important when you are using the WebSDK, since there is no good way of hiding your application security. </p>
+
+<p>Sinch delegated security means that we will trust you to authenticate you users with your preferred method and that you are protecting your own backend API.</p>
+
+<h2>User flow for signing a request using delegated security.</h2>
+
+<p><a href="https://camo.githubusercontent.com/f5138dbf2cc65d46877d10108d1abdcf08fcec3e/687474703a2f2f7777772e77656273657175656e63656469616772616d732e636f6d2f66696c65732f72656e6465723f6c696e6b3d325f304e68616945507561383465627439372d46" ><img src="https://camo.githubusercontent.com/f5138dbf2cc65d46877d10108d1abdcf08fcec3e/687474703a2f2f7777772e77656273657175656e63656469616772616d732e636f6d2f66696c65732f72656e6465723f6c696e6b3d325f304e68616945507561383465627439372d46" alt="" data-canonical-src="http://www.websequencediagrams.com/files/render?link=2_0NhaiEPua84ebt97-F" style="max-width:100%;"></a></p>
+
+<p>As you can see here, Sinch will trust that you protect your secret on your backend. Doing it this way has a couple of great benefits for you as a developer:</p>
+
+<ol class="task-list">
+<li>No user sync is required to add Sinch services to your backend.</li>
+<li>You are free to use any service or roll your own for user storage. </li>
+<li>You keep your customer data and authentication in one place without disclosing any information to a third party.</li>
+</ol><h2>Implementing The Sign Request In C#</h2>
+
+<p>For this tutorial, you are going to use a C# backend and WebAPI end point that will verify your user and return a userToken. In this example I am using a vanilla MVC 5 project with all the latest updates and WebAPI enabled. The implementation is pretty straight forward, and you are going to implement an API call that accepts a username and password and returns a Sinch token. </p>
+
+<p>If you are new to MVC 5, check out this tutorial on how to get started <a href="http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on" >MVC 5 App with Facebook, Twitter, LinkedIn and Google OAuth2 Sign-on</a>. It is not necessary to add the external providers; you just need the internal provider for this tutorial.</p>
+
+<h2>Prepare The Project</h2>
+
+<ol class="task-list">
+<li> If you don't have it already, add the <code>owin</code> package for WebAPI by running this command in the package manager console:
+<code>Install-Package Microsoft.AspNet.WebApi.Owin</code>
+</li>
+<li>Run it! Register a user. </li>
+<li>Add a new empty WebApi controller and call it <strong>SinchAuthController</strong>
+</li>
+</ol><p>Create the following method and return type to secure the access to the chat and ensure the identity you need to:</p>
+
+<pre><code>[HttpPost]
+public async Task&lt;LoginObject&gt; Sign(string username, string password) {}
+public class LoginObject {
+    [JsonProperty("userTicket")]
+    public string UserTicket { get; set; }
+}
+</code></pre>
+
+<p>Next, verify the username and password, and create a loginObject with an authTicket:</p>
+
+<pre><code>[HttpPost]
+public async Task&lt;LoginObject&gt; AuthUser(string username, string password) {
+    ///1. Verfiy user
+    var signinManager = Request.GetOwinContext().Get&lt;ApplicationSignInManager&gt;();
+    var result = await signinManager
+        .PasswordSignInAsync(username, password, false, shouldLockout: false);
+    if (result == SignInStatus.Success) {
+        /// 2. Create return type and sign the request
+        LoginObject loginObject = new LoginObject();
+        loginObject.UserTicket = Signature(username);
+        return loginObject;
+    } else {
+        ///wrong username and password
+        throw new HttpResponseException(HttpStatusCode.Forbidden);
+    }
+}
+</code></pre>
+
+<h2>Create The Assigned UserTicket</h2>
+
+<p>A valid UserTicket consists of a base64 encoded UserTicket (described below), and a hash signed with the application secret of that data in the format:<br><code>UserTicket = TicketData + ":" + TicketSignature</code>. First, add the following classes: </p>
+
+<pre><code>public class UserTicket {
+    [JsonProperty("identity")]
+    public Identity Identity { get; set; }
+    [JsonProperty("applicationkey")]
+    public string ApplicationKey { get; set; }
+    [JsonProperty("created")]
+    public string Created { get; set; }
+}
+
+public class Identity {
+    [JsonProperty("type")]
+    public string Type { get; set; }
+    [JsonProperty("endpoint")]
+    public string Endpoint { get; set; }
+}
+</code></pre>
+
+<p>You could of course use JSON directly, but I prefer my objects in this format. Most properties are self explanatory, but I want to point out that the type in the Identity type can be email, username, or a phone number. For this example I am going to use email. The email must be a valid email format, and the same goes if you specify a phone number (<a href="http://en.wikipedia.org/wiki/E.164" >E.164 number formatting</a>). </p>
+
+<pre><code>public string Signature(string userId) {
+    UserTicket userTicket = new UserTicket();
+    userTicket.Identity = new Identity { Type = "username", Endpoint = userId };
+    userTicket.ApplicationKey = "&lt;yourkey&gt;";
+    userTicket.Created = DateTime.UtcNow.ToString("O", CultureInfo.InvariantCulture);
+    Debug.WriteLine(DateTime.UtcNow.ToString("O", CultureInfo.InvariantCulture));
+    var json = JsonConvert.SerializeObject(userTicket);
+    var ticketData = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(json));
+    var sha256 = new HMACSHA256(Convert.FromBase64String(&lt;yoursecret&gt;));
+    var signature = Convert.ToBase64String(sha256.ComputeHash(Encoding.UTF8.GetBytes(json)));
+    Debug.WriteLine(json);
+    return ticketData + ":" + signature;
+}
+</code></pre>
+
+<h2>Try It Out</h2>
+
+<p>To try it out add the files from our JS calling tutorial (<a href="http://tutorial.sinch.com/js-calling-tutorial/" >http://tutorial.sinch.com/js-calling-tutorial/</a>) to a folder named SinchCalling. <br><a href="images/addsinchcalling.png" ><img src="images/addsinchcalling.png" alt="" style="max-width:100%;"></a><br>
+Open up the index.html and find: </p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//Use Sinch SDK to authenticate a user</span>
+<span class="nx">sinchClient</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="nx">signInObj</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//On success, show the UI</span>
+    <span class="nx">showUI</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="nx">handleError</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>Remove that and change it to:</p>
+
+<pre><code>$.post('http://localhost/SinchBackend/Api/Auth/?username=' + 
+        signInObj.username + 
+        '&amp;password='+signInObj.password,
+        function(authTicket) {
+            sinchClient.start(signInObj, function () {
+    //On success, show the UI
+    showUI();
+}).fail(handleError);
+});
+</code></pre>
+
+<p>Now, launch a browser and try it out!</p>
+
+<p>You can download our demo backend at <a href="https://github.com/sinch/net-backend-sample" >https://github.com/sinch/net-backend-sample</a>.</p>
+
+<p><strong>Read more:</strong></p>
+
+<ul class="task-list">
+<li>Use the Sinch JS SDK to build a messaging app - <a href="http://tutorial.sinch.com/js-messaging-tutorial/" title="USE THE SINCH JAVASCRIPT SDK TO BUILD A MESSAGING APP" >http://tutorial.sinch.com/js-messaging-tutorial/</a>
+</li>
+<li>Using Sinch JS SDK to call a phone number - <a href="http://tutorial.sinch.com/js-calling-tutorial/" >http://tutorial.sinch.com/js-calling-tutorial/</a></li></ul>
+    </div>
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
