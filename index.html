@@ -377,7 +377,7 @@
     </div>
 
     <div id="wrapper">
-	<h1>Using Delegated Security With Your Own Application Server Using C# and the Sinch SDK</h1>
+<h1>Using Delegated Security With Your Own Application Server Using C# and the Sinch SDK</h1>
 
 <p>Our recommended way for authenticating with Sinch is by using delegated security. This is especially important when you are using the WebSDK, since there is no good way of hiding your application security. </p>
 
@@ -385,7 +385,7 @@
 
 <h2>User flow for signing a request using delegated security.</h2>
 
-<p><a href="https://camo.githubusercontent.com/f5138dbf2cc65d46877d10108d1abdcf08fcec3e/687474703a2f2f7777772e77656273657175656e63656469616772616d732e636f6d2f66696c65732f72656e6465723f6c696e6b3d325f304e68616945507561383465627439372d46" ><img src="https://camo.githubusercontent.com/f5138dbf2cc65d46877d10108d1abdcf08fcec3e/687474703a2f2f7777772e77656273657175656e63656469616772616d732e636f6d2f66696c65732f72656e6465723f6c696e6b3d325f304e68616945507561383465627439372d46" alt="" data-canonical-src="http://www.websequencediagrams.com/files/render?link=2_0NhaiEPua84ebt97-F" style="max-width:100%;"></a></p>
+<p><img src="https://camo.githubusercontent.com/f5138dbf2cc65d46877d10108d1abdcf08fcec3e/687474703a2f2f7777772e77656273657175656e63656469616772616d732e636f6d2f66696c65732f72656e6465723f6c696e6b3d325f304e68616945507561383465627439372d46" alt="" data-canonical-src="http://www.websequencediagrams.com/files/render?link=2_0NhaiEPua84ebt97-F" style="max-width:100%;"></p>
 
 <p>As you can see here, Sinch will trust that you protect your secret on your backend. Doing it this way has a couple of great benefits for you as a developer:</p>
 
@@ -410,71 +410,71 @@
 </li>
 </ol><p>Create the following method and return type to secure the access to the chat and ensure the identity you need to:</p>
 
-<pre><code>[HttpPost]
-public async Task&lt;LoginObject&gt; Sign(string username, string password) {}
-public class LoginObject {
-    [JsonProperty("userTicket")]
-    public string UserTicket { get; set; }
-}
-</code></pre>
+<div class="highlight highlight-csharp"><pre><span class="na">[HttpPost]</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">LoginObject</span><span class="p">&gt;</span> <span class="n">Sign</span><span class="p">(</span><span class="kt">string</span> <span class="n">username</span><span class="p">,</span> <span class="kt">string</span> <span class="n">password</span><span class="p">)</span> <span class="p">{}</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">LoginObject</span> <span class="p">{</span>
+<span class="na">    [JsonProperty("userTicket")]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">UserTicket</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 
 <p>Next, verify the username and password, and create a loginObject with an authTicket:</p>
 
-<pre><code>[HttpPost]
-public async Task&lt;LoginObject&gt; AuthUser(string username, string password) {
-    ///1. Verfiy user
-    var signinManager = Request.GetOwinContext().Get&lt;ApplicationSignInManager&gt;();
-    var result = await signinManager
-        .PasswordSignInAsync(username, password, false, shouldLockout: false);
-    if (result == SignInStatus.Success) {
-        /// 2. Create return type and sign the request
-        LoginObject loginObject = new LoginObject();
-        loginObject.UserTicket = Signature(username);
-        return loginObject;
-    } else {
-        ///wrong username and password
-        throw new HttpResponseException(HttpStatusCode.Forbidden);
-    }
-}
-</code></pre>
+<div class="highlight highlight-csharp"><pre><span class="na">[HttpPost]</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">LoginObject</span><span class="p">&gt;</span> <span class="n">AuthUser</span><span class="p">(</span><span class="kt">string</span> <span class="n">username</span><span class="p">,</span> <span class="kt">string</span> <span class="n">password</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">///1. Verfiy user</span>
+    <span class="kt">var</span> <span class="n">signinManager</span> <span class="p">=</span> <span class="n">Request</span><span class="p">.</span><span class="n">GetOwinContext</span><span class="p">().</span><span class="n">Get</span><span class="p">&lt;</span><span class="n">ApplicationSignInManager</span><span class="p">&gt;();</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">signinManager</span>
+        <span class="p">.</span><span class="n">PasswordSignInAsync</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">shouldLockout</span><span class="p">:</span> <span class="k">false</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="p">==</span> <span class="n">SignInStatus</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">/// 2. Create return type and sign the request</span>
+        <span class="n">LoginObject</span> <span class="n">loginObject</span> <span class="p">=</span> <span class="k">new</span> <span class="n">LoginObject</span><span class="p">();</span>
+        <span class="n">loginObject</span><span class="p">.</span><span class="n">UserTicket</span> <span class="p">=</span> <span class="n">Signature</span><span class="p">(</span><span class="n">username</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">loginObject</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">///wrong username and password</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">HttpResponseException</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">Forbidden</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 
 <h2>Create The Assigned UserTicket</h2>
 
 <p>A valid UserTicket consists of a base64 encoded UserTicket (described below), and a hash signed with the application secret of that data in the format:<br><code>UserTicket = TicketData + ":" + TicketSignature</code>. First, add the following classes: </p>
 
-<pre><code>public class UserTicket {
-    [JsonProperty("identity")]
-    public Identity Identity { get; set; }
-    [JsonProperty("applicationkey")]
-    public string ApplicationKey { get; set; }
-    [JsonProperty("created")]
-    public string Created { get; set; }
-}
+<div class="highlight highlight-csharp"><pre><span class="k">public</span> <span class="k">class</span> <span class="nc">UserTicket</span> <span class="p">{</span>
+<span class="na">    [JsonProperty("identity")]</span>
+    <span class="k">public</span> <span class="n">Identity</span> <span class="n">Identity</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="na">    [JsonProperty("applicationkey")]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">ApplicationKey</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="na">    [JsonProperty("created")]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Created</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
 
-public class Identity {
-    [JsonProperty("type")]
-    public string Type { get; set; }
-    [JsonProperty("endpoint")]
-    public string Endpoint { get; set; }
-}
-</code></pre>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Identity</span> <span class="p">{</span>
+<span class="na">    [JsonProperty("type")]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Type</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="na">    [JsonProperty("endpoint")]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Endpoint</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 
 <p>You could of course use JSON directly, but I prefer my objects in this format. Most properties are self explanatory, but I want to point out that the type in the Identity type can be email, username, or a phone number. For this example I am going to use email. The email must be a valid email format, and the same goes if you specify a phone number (<a href="http://en.wikipedia.org/wiki/E.164" >E.164 number formatting</a>). </p>
 
-<pre><code>public string Signature(string userId) {
-    UserTicket userTicket = new UserTicket();
-    userTicket.Identity = new Identity { Type = "username", Endpoint = userId };
-    userTicket.ApplicationKey = "&lt;yourkey&gt;";
-    userTicket.Created = DateTime.UtcNow.ToString("O", CultureInfo.InvariantCulture);
-    Debug.WriteLine(DateTime.UtcNow.ToString("O", CultureInfo.InvariantCulture));
-    var json = JsonConvert.SerializeObject(userTicket);
-    var ticketData = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(json));
-    var sha256 = new HMACSHA256(Convert.FromBase64String(&lt;yoursecret&gt;));
-    var signature = Convert.ToBase64String(sha256.ComputeHash(Encoding.UTF8.GetBytes(json)));
-    Debug.WriteLine(json);
-    return ticketData + ":" + signature;
-}
-</code></pre>
+<div class="highlight highlight-csharp"><pre><span class="k">public</span> <span class="kt">string</span> <span class="nf">Signature</span><span class="p">(</span><span class="kt">string</span> <span class="n">userId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">UserTicket</span> <span class="n">userTicket</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UserTicket</span><span class="p">();</span>
+    <span class="n">userTicket</span><span class="p">.</span><span class="n">Identity</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Identity</span> <span class="p">{</span> <span class="n">Type</span> <span class="p">=</span> <span class="s">"username"</span><span class="p">,</span> <span class="n">Endpoint</span> <span class="p">=</span> <span class="n">userId</span> <span class="p">};</span>
+    <span class="n">userTicket</span><span class="p">.</span><span class="n">ApplicationKey</span> <span class="p">=</span> <span class="s">"&lt;yourkey&gt;"</span><span class="p">;</span>
+    <span class="n">userTicket</span><span class="p">.</span><span class="n">Created</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">"O"</span><span class="p">,</span> <span class="n">CultureInfo</span><span class="p">.</span><span class="n">InvariantCulture</span><span class="p">);</span>
+    <span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">"O"</span><span class="p">,</span> <span class="n">CultureInfo</span><span class="p">.</span><span class="n">InvariantCulture</span><span class="p">));</span>
+    <span class="kt">var</span> <span class="n">json</span> <span class="p">=</span> <span class="n">JsonConvert</span><span class="p">.</span><span class="n">SerializeObject</span><span class="p">(</span><span class="n">userTicket</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">ticketData</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToBase64String</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">json</span><span class="p">));</span>
+    <span class="kt">var</span> <span class="n">sha256</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HMACSHA256</span><span class="p">(</span><span class="n">Convert</span><span class="p">.</span><span class="n">FromBase64String</span><span class="p">(&lt;</span><span class="n">yoursecret</span><span class="p">&gt;));</span>
+    <span class="kt">var</span> <span class="n">signature</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToBase64String</span><span class="p">(</span><span class="n">sha256</span><span class="p">.</span><span class="n">ComputeHash</span><span class="p">(</span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">json</span><span class="p">)));</span>
+    <span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">ticketData</span> <span class="p">+</span> <span class="s">":"</span> <span class="p">+</span> <span class="n">signature</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 
 <h2>Try It Out</h2>
 
@@ -491,16 +491,16 @@ Open up the index.html and find: </p>
 
 <p>Remove that and change it to:</p>
 
-<pre><code>$.post('http://localhost/SinchBackend/Api/Auth/?username=' + 
-        signInObj.username + 
-        '&amp;password='+signInObj.password,
-        function(authTicket) {
-            sinchClient.start(signInObj, function () {
-    //On success, show the UI
-    showUI();
-}).fail(handleError);
-});
-</code></pre>
+<div class="highlight highlight-javascript"><pre><span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'http://localhost/SinchBackend/Api/Auth/?username='</span> <span class="o">+</span> 
+        <span class="nx">signInObj</span><span class="p">.</span><span class="nx">username</span> <span class="o">+</span> 
+        <span class="s1">'&amp;password='</span><span class="o">+</span><span class="nx">signInObj</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span>
+        <span class="kd">function</span><span class="p">(</span><span class="nx">authTicket</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">sinchClient</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="nx">signInObj</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//On success, show the UI</span>
+    <span class="nx">showUI</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="nx">handleError</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
 
 <p>Now, launch a browser and try it out!</p>
 
@@ -512,6 +512,7 @@ Open up the index.html and find: </p>
 <li>Use the Sinch JS SDK to build a messaging app - <a href="http://tutorial.sinch.com/js-messaging-tutorial/" title="USE THE SINCH JAVASCRIPT SDK TO BUILD A MESSAGING APP" >http://tutorial.sinch.com/js-messaging-tutorial/</a>
 </li>
 <li>Using Sinch JS SDK to call a phone number - <a href="http://tutorial.sinch.com/js-calling-tutorial/" >http://tutorial.sinch.com/js-calling-tutorial/</a></li></ul>
+	
     </div>
 </body>
 </html>
