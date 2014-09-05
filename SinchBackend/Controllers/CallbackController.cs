@@ -20,7 +20,7 @@ namespace SinchBackend.Controllers {
             var svaml = new Svaml();
             if (json["event"].ToString() == "ice") {
                 //only calls to my personal phone is allowed with this app
-                if (json["to"].ToString() == "+15612600684") {
+                if (json["to"]["endpoint"].ToString() == "+15612600684") {
                     svaml.Action = new SimpleICEAction() {
                         Name = "ConnectPSTN",
                         callback = true,
