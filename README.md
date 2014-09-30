@@ -99,7 +99,7 @@ public string Signature(string userId) {
 
 ## Try It Out
 
-To try it out add the files from our JS calling tutorial (http://tutorial.sinch.com/js-calling-tutorial/) to a folder named SinchCalling. 
+To try it out add the files from our JS calling tutorial (http://www.sinch.com/tutorials/using-sinch-js-sdk-make-voice-calls/) to a folder named SinchCalling. 
 
 ![](Images/addsinchcalling.PNG)
 
@@ -131,5 +131,5 @@ You can download our demo backend at [https://github.com/sinch/net-backend-sampl
 
 **Read more:**
 
-* Use the Sinch JS SDK to build a messaging app - [http://tutorial.sinch.com/js-messaging-tutorial/](http://tutorial.sinch.com/js-messaging-tutorial/ "USE THE SINCH JAVASCRIPT SDK TO BUILD A MESSAGING APP")
-* Using Sinch JS SDK to call a phone number - [http://tutorial.sinch.com/js-calling-tutorial/](http://tutorial.sinch.com/js-calling-tutorial/)
+* Use the Sinch JS SDK to build a messaging app - [http://www.sinch.com/tutorials/build-instant-messaging-app-sinch-javascript/](http://www.sinch.com/tutorials/build-instant-messaging-app-sinch-javascript/ "USE THE SINCH JAVASCRIPT SDK TO BUILD A MESSAGING APP")
+* Using Sinch JS SDK to call a phone number - [http://www.sinch.com/tutorials/using-sinch-js-sdk-make-voice-calls/](http://www.sinch.com/tutorials/using-sinch-js-sdk-make-voice-calls/)
