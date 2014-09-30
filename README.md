@@ -100,7 +100,9 @@ public string Signature(string userId) {
 ## Try It Out
 
 To try it out add the files from our JS calling tutorial (http://tutorial.sinch.com/js-calling-tutorial/) to a folder named SinchCalling. 
+
 ![](Images/addsinchcalling.PNG)
+
 Open up the index.html and find: 
 ```javascript
 //Use Sinch SDK to authenticate a user
