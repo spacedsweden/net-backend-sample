@@ -1,8 +1,3 @@
-Sinch backend samples in .net
-see http://tutorial.sinch.com/net-backend-sample
-
-###THIS IS A DEMO
-
 # Securing your Sinch Calling functionality app further with REST API
 
 The Callback APIs are a really powerful way to get information about your calls, and further secure them. This is the final step before you allow the call to be connected. If you have followed our other tutorials, you are likely getting familiar with the different states of a call (progressing, established, and ended). With the callback API, you get the same events, enabling you to make decisions just before you connect the call to the server. 
